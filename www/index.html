@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+		<script>
+			var obj = {};
+      		var contact = function() {
+	            obj.name = "Joey";
+	            obj.email = "Joey@joey.com";
+	            obj.phone = "5135555555";
+	            obj.message = "This is a test message";
+	            $.ajax({
+	                type: "GET",
+	                url: "/contact",
+	                dataType: "json",
+	                data: obj,
+	                success: function() {
+	                	alert("Success!");
+	                }, error: function() {
+	                    
+	                }, complete: function() {
+	                	alert("Success!");
+	                }
+	            });
+      		}
+      		contact();
+		</script> 
+	</head>
+	<body>
+		<p>Hello World!</p>
+	</body>
+</html>
