@@ -21,7 +21,7 @@ function contact() {
 }
 var search = function() {
 	obj = {};
-	obj.data = $("#searchBox").val();
+	obj.data = $("#searchBox").val(); //grab the text from the search box as our query
 	$.ajax({
 	    type: "GET",
 	    url: "/search",
@@ -29,8 +29,8 @@ var search = function() {
 	    data: obj,
 	    success: function(data) {
 	    	var dataString = "First result: " + JSON.stringify(data.body[0].title);
-	    	$(["#firstResponse", "#responseData"]).empty();
-	    	$("#firstResponse").text(dataString);
+	    	$(["#firstResponse", "#responseData"]).empty(); //empty out the last results
+	    	$("#firstResponse").text(dataString); //add our response data to the page
 	    	$("#responseData").text(JSON.stringify(data));
 	    }, error: function() {
 	    }, complete: function() {
