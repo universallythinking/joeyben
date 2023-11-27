@@ -19,7 +19,8 @@
   "dependencies": {
     "express": "*",
     "nodemailer": "*",
-    "cookie-parser": "*"
+    "cookie-parser": "*",
+    "youtube-sr": "*"
   },
   "homepage": "https://github.com/johnpapa/node-hello#readme"
 }

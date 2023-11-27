@@ -45,6 +45,33 @@ app.get('/contact', function(req, res) {
 });
 
 
+const YouTube = require("youtube-sr").default;
+
+app.get("/search", function(req,res) {
+  //Initialize variables to hold our response data
+  var videos;
+  var arr = [];
+  var obj = {};
+  var q = req.query.data; //searchQuery from the JS OBJ in index.html
+  YouTube.search(q, { limit: 100, type: "video" })
+    .then(x => {
+      videos = x;
+      videos.forEach( function ( v ) {
+        obj = {};
+        obj.url = v.url;
+        obj.title = v.title;
+        obj.timestamp = v.duration;
+        obj.thumbnail = v.thumbnail.url;
+        obj.videoId = v.id;
+        arr.push(obj);
+      });
+      var responseBody = {};
+      responseBody.body = arr;
+      res.send(JSON.stringify(responseBody));
+    })
+    .catch(console.error);
+});
+
 app.use(express.static(__dirname + '/www'))
     .use(cookieParser());
 
