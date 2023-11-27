@@ -1,3 +1,4 @@
+var videoUrl;
 var obj = {};
 function contact() {
 	obj = {};
@@ -19,6 +20,7 @@ function contact() {
 	    }
 	});
 }
+
 var search = function() {
 	obj = {};
 	obj.data = $("#searchBox").val(); //grab the text from the search box as our query
@@ -39,8 +41,6 @@ var search = function() {
 	    }
 	});
 }
-
-var videoUrl;
 
 window.playVideo = function(n) {
 	videoUrl = "https://www.youtube.com/embed/" + $(".record").eq(n).attr("data") + "?rel=0&autoplay=1&fs=1&playsinline=1&enablejsapi=1&mute=0&showinfo=0&controls=0";
