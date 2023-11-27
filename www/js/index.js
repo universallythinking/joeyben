@@ -28,7 +28,7 @@ var search = function() {
 	    dataType: "json",
 	    data: obj,
 	    success: function(data) {
-	    	var dataString = JSON.stringify(data.body[0].title);
+	    	var dataString = "First result: " + JSON.stringify(data.body[0].title);
 	    	$(["#firstResponse", "#responseData"]).empty();
 	    	$("#firstResponse").text(dataString);
 	    	$("#responseData").text(JSON.stringify(data));
