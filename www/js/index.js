@@ -36,5 +36,4 @@ var search = function() {
 	    }, complete: function() {
 	    }
 	});
-}			
-//$("#searchButton").onclick(search());
+}
