@@ -57,17 +57,17 @@ app.get("/search", function(req,res) {
     .then(x => {
       videos = x;
       videos.forEach( function ( v ) {
-        obj = {};
-        obj.url = v.url;
+        obj = {}; //reset the object
+        obj.url = v.url; //add the object properties
         obj.title = v.title;
         obj.timestamp = v.duration;
         obj.thumbnail = v.thumbnail.url;
         obj.videoId = v.id;
-        arr.push(obj);
+        arr.push(obj); //push the object into an array, to be parsed later
       });
       var responseBody = {};
       responseBody.body = arr;
-      res.send(JSON.stringify(responseBody));
+      res.send(JSON.stringify(responseBody)); //send the response to the front end
     })
     .catch(console.error);
 });
