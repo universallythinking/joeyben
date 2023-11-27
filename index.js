@@ -76,6 +76,9 @@ app.use(express.static(__dirname + '/www'))
     .use(cookieParser());
 
 
-app.listen(8080);
+var hostPort = 5000;
+  
 
-console.log("Visit http://localhost:8080 in your browser!");
+app.listen(hostPort);
+
+console.log("Visit http://localhost:" & hostPort & "in your browser!");
