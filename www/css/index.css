@@ -1,0 +1,23 @@
+div#searchArea {
+    margin-top: 15px;
+    width: 50%;
+    margin-left: 25%;
+    position: relative;
+}
+
+#currentVideo {
+	position: relative;
+	top: 10px;
+	left: 25%;
+	z-index: 10;
+	margin: auto;
+	width: 50%;
+	height: auto;
+}
+
+#searchBox {
+	width: 70%;
+}
+#searchButton {
+	width: 28%;
+}
