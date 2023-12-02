@@ -17,7 +17,15 @@ div#searchArea {
 
 #searchBox {
 	width: 70%;
+	border-top-left-radius: 100px;
+	border-bottom-left-radius: 100px;
 }
 #searchButton {
 	width: 28%;
+	border-bottom-right-radius: 100px;
+	border-top-right-radius: 100px;
+}
+
+p.record {
+    font-family: sans-serif;
 }
