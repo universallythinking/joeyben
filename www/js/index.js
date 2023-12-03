@@ -40,6 +40,7 @@ var search = function() {
 	    }, complete: function() {
 	    }
 	});
+	$("#autoComplete").empty();
 }
 
 window.playVideo = function(n) {

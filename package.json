@@ -20,7 +20,8 @@
     "express": "*",
     "nodemailer": "*",
     "cookie-parser": "*",
-    "youtube-sr": "*"
+    "youtube-sr": "*",
+    "youtube-autocomplete": "*"
   },
   "homepage": "https://github.com/johnpapa/node-hello#readme"
 }

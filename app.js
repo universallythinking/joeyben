@@ -76,6 +76,25 @@ app.use(express.static(__dirname + '/www'))
     .use(cookieParser());
 
 
+
+
+
+/* ADDED THIS */
+const AutoComplete = require('youtube-autocomplete');
+//take in the "/query" ajax call from autocomplete.js
+app.get("/query", function(req, res) {
+  AutoComplete(req.query.data, (err, queries) => { // req.query.data is the current text from the searchbox in index.html
+    if (err) throw err;
+    res.send(queries); //send the response data back to the front end AJAX call in autocomplete.js
+    console.log(queries);
+  });
+});
+/* END ADDED CODE */
+
+
+
+
+
 var hostPort = 8080;
   
 
