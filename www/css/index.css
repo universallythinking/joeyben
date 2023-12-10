@@ -3,6 +3,7 @@ div#searchArea {
     width: 50%;
     margin-left: 25%;
     position: fixed;
+    z-index: 10;
 }
 
 div#responseData {
