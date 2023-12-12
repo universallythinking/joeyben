@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mobile Registration Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* position: absolute; */
+        /* top: 50px; */
+        top: 50px;
+      }
+      .form {
+        width: 100%;
+        max-width: 400px;
+        background-color: #f2f2f2;
+        padding: 30px;
+        border-radius: 5px;
+        /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+      }
+      .form input[type="text"],
+      .form input[type="email"],
+      .form input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+      .form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .form button:hover {
+        background-color: #45a049;
+      }
+      .form .tab {
+        margin-top: 10px;
+        text-align: center;
+        color: #888;
+        cursor: pointer;
+      }
+      .form input {
+        box-sizing: border-box; /* Add this line */
+        width: 100%;
+        height: 30px;
+        padding: 10px;
+        margin: 10px 0;
+      }
+      .logo {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        margin-top: 30px;
+      }
+      .logo img {
+        max-width: 50%;
+        height: auto;
+      }
+      @media (max-width: 600px) {
+        .form {
+          padding: 20px;
+        }
+      }
+    </style>
+    <script>
+      function openMenu() {
+        $(".menu-container").toggle();
+      }
+      function loginPage() {
+        window.location.href = "login.html";
+      }
+
+      function visitProfile() {
+        window.location.href = "profile.html";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="logo">
+      <img src="images/nametag.png" alt="Logo" />
+    </div>
+    <div class="container">
+      <div class="form">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Name" />
+
+        <label for="birthdate">Birthdate</label>
+        <input type="date" id="birthdate" placeholder="Birthdate" />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Email" />
+
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Username" />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Password" />
+
+        <button onclick="visitProfile();" type="submit">Register</button>
+        <div onclick="loginPage();" class="tab">
+          Already have an account? Login
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

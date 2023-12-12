@@ -1,47 +1,47 @@
 div#searchArea {
-    margin-top: 15px;
-    width: 50%;
-    margin-left: 25%;
-    position: fixed;
-    z-index: 10;
+  margin-top: 15px;
+  width: 50%;
+  margin-left: 25%;
+  position: fixed;
+  z-index: 10;
 }
 
 div#responseData {
-    margin: 20% auto;
-    width: 80%;
+  margin: 20% auto;
+  width: 80%;
 }
 
 #currentVideo {
-    position: fixed;
-    top: 60px;
-    left: 27.5%;
-    z-index: 10;
-    margin: auto;
-    width: 45%;
-    height: auto;
-    padding-bottom: 30px;
-    z-index: 1;
+  position: fixed;
+  top: 60px;
+  left: 27.5%;
+  z-index: 10;
+  margin: auto;
+  width: 45%;
+  height: auto;
+  padding-bottom: 30px;
+  z-index: 1;
 }
 
 #searchBox {
-	width: 70%;
-	border-top-left-radius: 100px;
-	border-bottom-left-radius: 100px;
+  width: 70%;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
 }
 
 #searchButton {
-	width: 28%;
-	border-bottom-right-radius: 100px;
-	border-top-right-radius: 100px;
+  width: 28%;
+  border-bottom-right-radius: 100px;
+  border-top-right-radius: 100px;
 }
 
 p.record {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
 div#autoComplete {
-    z-index: 10 !important;
-    background: white;
-    padding: 0 30px;
-    position: absolute;
+  z-index: 10 !important;
+  background: white;
+  padding: 0 30px;
+  position: absolute;
 }

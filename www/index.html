@@ -1,20 +1,255 @@
-<html>
-	<head>
-		<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="css/index.css">
-	</head>
-	<body>
-		<div id="searchArea">
-			<input id="searchBox" onkeydown="query();" />
-			<button id="searchButton" onclick="search();">Search</button>
-			<div id="autoComplete"></div>
-		</div>
-		<iframe name='currentVideo' id='currentVideo' src='https://www.youtube.com/embed/8tPnX7OPo0Q?rel=0&autoplay=1&fs=1&playsinline=1&enablejsapi=1&mute=0&showinfo=0&controls=0' frameborder='no' webkit-playsinline> </iframe>
-		<br>
-		<br>
-		<div id="responseData"></div>
-		<script src="js/index.js"></script>
-		<script src="js/autocomplete.js"></script>
-		
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/font-awesome/css/all.min.css" />
+    <script>
+      if (!localStorage.loaded) {
+        localStorage.loaded = true;
+        location.href = "/login.html";
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User List</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      h1.header {
+        position: fixed;
+        background: white;
+        z-index: 1;
+        height: auto;
+        width: 100vw;
+        margin: 0;
+        text-align: center;
+        top: 0;
+      }
+      .user {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+      .user-info {
+        max-width: 50%;
+        display: inline-block;
+      }
+      .user-list {
+        position: relative;
+        top: 40px;
+      }
+      .user-add {
+        right: 50px;
+        position: absolute;
+      }
+      .user-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .user-bio {
+        font-weight: bold;
+      }
+
+      .user-name {
+        margin-bottom: 5px;
+      }
+
+      .user-username {
+        color: #888;
+      }
+      /* Tabbed menu container */
+      .tabbed-menu {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #f1f1f1;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+        z-index: 10;
+      }
+
+      /* Tabbed menu item */
+      .tabbed-menu-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #888;
+        font-size: 12px;
+        text-decoration: none;
+      }
+
+      /* Tabbed menu item icon */
+      .tabbed-menu-item i {
+        margin-bottom: 5px;
+      }
+
+      .menu-container {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        width: 250px;
+        height: 100vh;
+        background-color: #f2f2f2;
+        transition: left 0.3s;
+        display: none;
+      }
+
+      .menu-container.show {
+        left: 0;
+      }
+
+      .menu-item {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        // Dummy data
+        var users = [
+          {
+            name: "John Doe",
+            username: "johndoe",
+            profilePicture: "images/nametag.png",
+            bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          },
+          {
+            name: "Jane Smith",
+            username: "janesmith",
+            profilePicture: "images/nametag.png",
+            bio: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem.",
+          },
+          {
+            name: "John Doe",
+            username: "johndoe",
+            profilePicture: "images/nametag.png",
+            bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          },
+          {
+            name: "Jane Smith",
+            username: "janesmith",
+            profilePicture: "images/nametag.png",
+            bio: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem.",
+          },
+          {
+            name: "John Doe",
+            username: "johndoe",
+            profilePicture: "images/nametag.png",
+            bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          },
+          {
+            name: "Jane Smith",
+            username: "janesmith",
+            profilePicture: "images/nametag.png",
+            bio: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem.",
+          },
+          {
+            name: "John Doe",
+            username: "johndoe",
+            profilePicture: "images/nametag.png",
+            bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          },
+          {
+            name: "Jane Smith",
+            username: "janesmith",
+            profilePicture: "images/nametag.png",
+            bio: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem.",
+          },
+          {
+            name: "John Doe",
+            username: "johndoe",
+            profilePicture: "images/nametag.png",
+            bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          },
+          {
+            name: "Jane Smith",
+            username: "janesmith",
+            profilePicture: "images/nametag.png",
+            bio: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem.",
+          },
+          // Add more dummy users here
+        ];
+
+        // Display the user list
+        var userList = $(".user-list");
+        users.forEach(function (user) {
+          var userElement = $("<div>").addClass("user");
+
+          var userImageElement = $("<img>")
+            .addClass("user-image")
+            .attr("src", user.profilePicture);
+          userElement.append(userImageElement);
+
+          var userInfoElement = $("<div>").addClass("user-info");
+          var userNameElement = $("<div>")
+            .addClass("user-name")
+            .text(user.name);
+          var userUsernameElement = $("<div>")
+            .addClass("user-username")
+            .text(user.username);
+          var userBioElement = $("<div>").addClass("user-bio").text(user.bio);
+          userInfoElement.append(
+            userNameElement,
+            userUsernameElement,
+            userBioElement
+          );
+          userElement.append(userInfoElement);
+          var userAddElement = $("<div>")
+            .addClass("user-add")
+            .html("<i class='fa fa-plus'></i>");
+          userElement.append(userAddElement);
+          userList.append(userElement);
+        });
+      });
+      function openMenu() {
+        $(".menu-container").toggle();
+      }
+      function visitProfile() {
+        window.location.href = "profile.html";
+      }
+
+      function editProfile() {
+        window.location.href = "editprofile.html";
+      }
+    </script>
+  </head>
+  <body>
+    <h1 class="header">Users In Your Area...</h1>
+    <div class="user-list">
+      <!-- User list content will be added here -->
+    </div>
+    <div class="tabbed-menu">
+      <a onclick="openMenu();" class="tabbed-menu-item">
+        <i id="menu-toggle" class="fa fa-bars"></i>
+        Menu
+      </a>
+      <a href="index.html" class="tabbed-menu-item">
+        <i class="fa fa-home"></i>
+        Home
+      </a>
+      <a href="#" class="tabbed-menu-item">
+        <i class="fa fa-cog"></i>
+        Settings
+      </a>
+      <a onclick="visitProfile();" class="tabbed-menu-item">
+        <i class="fa fa-user"></i>
+        My Profile
+      </a>
+    </div>
+    <div class="menu-container">
+      <div class="menu-item">Menu Item 1</div>
+      <div class="menu-item">Menu Item 2</div>
+      <div class="menu-item">Menu Item 3</div>
+    </div>
+  </body>
 </html>

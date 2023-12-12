@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Profile Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/font-awesome/css/all.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <style>
+      body {
+        background-color: #f0f2f5;
+        font-family: sans-serif;
+      }
+
+      .profile {
+        /* max-width: 600px; */
+        /* margin: 50px auto; */
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        height: 100vh;
+      }
+
+      .cover-photo {
+        position: relative;
+        overflow: hidden;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      .cover-photo img {
+        width: 100%;
+      }
+
+      .profile-picture {
+        position: relative;
+        top: -150px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .profile-picture img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        background: white;
+      }
+
+      .info {
+        padding: 20px;
+        position: relative;
+        display: block;
+        top: -100px;
+      }
+
+      h1 {
+        margin-top: 0;
+      }
+
+      .bio {
+        margin-top: 10px;
+      }
+
+      .personal-info {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 20px;
+        text-align: left;
+      }
+
+      .personal-info li {
+        margin-bottom: 10px;
+      }
+      .back-cog {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 1;
+        background: #4f4f4f;
+        border: 10px solid #4f4f4f;
+        border-radius: 100px;
+      }
+
+      .back-cog i {
+        width: 20px;
+        height: 20px;
+        color: white;
+        /* background: black; */
+        /* border: 3px solid black; */
+        /* border-radius: 100px; */
+        font-size: 20px;
+      }
+      /* Tabbed menu container */
+      .tabbed-menu {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #f1f1f1;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+        z-index: 10;
+      }
+
+      /* Tabbed menu item */
+      .tabbed-menu-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #888;
+        font-size: 12px;
+        text-decoration: none;
+      }
+
+      /* Tabbed menu item icon */
+      .tabbed-menu-item i {
+        margin-bottom: 5px;
+      }
+
+
+      .menu-container {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        width: 250px;
+        height: 100vh;
+        background-color: #f2f2f2;
+        transition: left 0.3s;
+        display:none;
+      }
+
+      .menu-container.show {
+        left: 0;
+      }
+
+      .menu-item {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+    </style>
+     <script>
+      function openMenu() {
+        $(".menu-container").toggle();
+      }
+      function visitProfile() {
+        window.location.href = "profile.html";
+      }
+
+      function editProfile() {
+        window.location.href = "editprofile.html";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="profile">
+      <div class="back-cog">
+        <i onclick="visitProfile();" class="fa fa-arrow-left"></i>
+      </div>
+      <div class="cover-photo">
+        <img src="images/background.png" alt="Cover Photo" />
+      </div>
+      <div class="profile-picture">
+        <img src="images/nametag.png" alt="Profile Picture" />
+      </div>
+      <div class="info">
+        <h1>John Doe</h1>
+        <p class="bio">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra
+          mauris a ante ullamcorper, in rutrum lacus aliquam. Morbi at laoreet
+          justo, eu tincidunt sem. Quisque sed massa et ex blandit tincidunt vel
+          at metus.
+        </p>
+        <ul class="personal-info">
+          <form>
+            <li>
+              <strong>Email:</strong> <input type="text" name="email" value="johndoe@example.com">
+            </li>
+            <li>
+              <strong>Phone:</strong> <input type="text" name="phone" value="123-456-7890">
+            </li>
+            <li>
+              <strong>Location:</strong> <input type="text" name="location" value="New York, USA">
+            </li>
+            <li>
+              <strong>LinkedIn:</strong> <input type="text" name="linkedin" value="john-doe-linkedin">
+            </li>
+            <li>
+              <strong>Facebook:</strong> <input type="text" name="facebook" value="john-doe-facebook">
+            </li>
+            <li>
+              <strong>Instagram:</strong> <input type="text" name="instagram" value="john-doe-instagram">
+            </li>
+            <li>
+              <strong>TikTok:</strong> <input type="text" name="tiktok" value="john-doe-tiktok">
+            </li>
+            <li>
+              <input type="submit" value="Submit">
+            </li>
+          </form>
+        </ul>
+      </div>
+      <div class="tabbed-menu">
+        <a onclick="openMenu();" class="tabbed-menu-item">
+          <i id="menu-toggle" class="fa fa-bars"></i>
+          Menu
+        </a>
+        <a href="index.html" class="tabbed-menu-item">
+          <i class="fa fa-home"></i>
+          Home
+        </a>
+        <a href="#" class="tabbed-menu-item">
+          <i class="fa fa-cog"></i>
+          Settings
+        </a>
+        <a onclick="visitProfile();" class="tabbed-menu-item">
+          <i class="fa fa-user"></i>
+          My Profile
+        </a>
+      </div>
+      <div class="menu-container">
+        <div class="menu-item">Menu Item 1</div>
+        <div class="menu-item">Menu Item 2</div>
+        <div class="menu-item">Menu Item 3</div>
+      </div>
+  </body>
+</html>

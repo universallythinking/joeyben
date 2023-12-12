@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/font-awesome/css/all.min.css" />
+    <style>
+      /* CSS code for mobile-friendly messaging interface */
+      body {
+        font-family: sans-serif;
+        background-color: #b4bfc3;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .message {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 80%;
+      }
+
+      .sender {
+        font-weight: bold;
+        color: #333;
+      }
+
+      .timestamp {
+        font-size: 12px;
+        color: #999;
+      }
+
+      .content {
+        margin-top: 5px;
+      }
+
+      .input-container {
+        display: flex;
+        margin-top: 20px;
+        position: fixed;
+        width: 90%;
+        bottom: 80px;
+      }
+
+      .input-field {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .send-button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+      .message.from {
+        float: right;
+        background: white;
+      }
+      .message.to {
+        float: left;
+        background: #84848f;
+        color: white;
+      }
+      .message.to .timestamp {
+        color: black;
+      }
+      .message.to .sender {
+        color: white;
+      }
+
+      /* Tabbed menu container */
+      .tabbed-menu {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #f1f1f1;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+      }
+
+      /* Tabbed menu container */
+      .tabbed-menu {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #f1f1f1;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+        z-index: 10;
+      }
+
+      /* Tabbed menu item */
+      .tabbed-menu-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #888;
+        font-size: 12px;
+        text-decoration: none;
+      }
+
+      /* Tabbed menu item icon */
+      .tabbed-menu-item i {
+        margin-bottom: 5px;
+      }
+
+      .menu-container {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        width: 250px;
+        height: 100vh;
+        background-color: #f2f2f2;
+        transition: left 0.3s;
+        display: none;
+      }
+
+      .menu-container.show {
+        left: 0;
+      }
+
+      .menu-item {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+    </style>
+    <script>
+      function openMenu() {
+        $(".menu-container").toggle();
+      }
+      function visitProfile() {
+        window.location.href = "profile.html";
+      }
+
+      function editProfile() {
+        window.location.href = "editprofile.html";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="message to">
+        <div class="sender">John Doe</div>
+        <div class="timestamp">10:30 AM</div>
+        <div class="content">Hello, how are you?</div>
+      </div>
+      <div class="message from">
+        <div class="sender">Jane Smith</div>
+        <div class="timestamp">10:35 AM</div>
+        <div class="content">I'm good, thanks! How about you?</div>
+      </div>
+      <div class="input-container">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Type your message..."
+        />
+        <button class="send-button">Send</button>
+      </div>
+    </div>
+    <div class="tabbed-menu">
+      <a onclick="openMenu();" class="tabbed-menu-item">
+        <i class="fa fa-bars"></i>
+        Menu
+      </a>
+      <a href="#" class="tabbed-menu-item">
+        <i class="fa fa-home"></i>
+        Home
+      </a>
+      <a href="#" class="tabbed-menu-item">
+        <i class="fa fa-cog"></i>
+        Settings
+      </a>
+      <a onclick="visitProfile();" class="tabbed-menu-item">
+        <i class="fa fa-user"></i>
+        My Profile
+      </a>
+    </div>
+    <div class="menu-container">
+      <div class="menu-item">Menu Item 1</div>
+      <div class="menu-item">Menu Item 2</div>
+      <div class="menu-item">Menu Item 3</div>
+    </div>
+  </body>
+</html>
