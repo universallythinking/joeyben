@@ -150,9 +150,17 @@
       function visitProfile() {
         window.location.href = "profile.html";
       }
+     
 
       function editProfile() {
         window.location.href = "editprofile.html";
+      }
+
+      function openLogin() {
+        window.location.href = "login.html";
+      }
+      function openRegister() {
+        window.location.href = "register.html";
       }
     </script>
   </head>
@@ -223,8 +231,8 @@
         </a>
       </div>
       <div class="menu-container">
-        <div class="menu-item">Menu Item 1</div>
-        <div class="menu-item">Menu Item 2</div>
+        <div class="menu-item" onclick="openLogin();">Log In</div>
+        <div class="menu-item" onclick="openRegister();">Register</div>
         <div class="menu-item">Menu Item 3</div>
       </div>
   </body>
