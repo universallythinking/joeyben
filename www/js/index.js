@@ -20,7 +20,21 @@ function contact() {
     },
   });
 }
-
+window.downloadVideo = function (n) {
+  videoUrl =
+    "https://www.youtube.com/watch?v=" + $(".record").eq(n).attr("data");
+  obj = {};
+  obj.data = videoUrl; //grab the text from the search box as our query
+  $.ajax({
+    type: "GET",
+    url: "/download",
+    dataType: "json",
+    data: obj,
+    success: function (data) {},
+    error: function () {},
+    complete: function () {},
+  });
+};
 var search = function () {
   obj = {};
   obj.data = $("#searchBox").val(); //grab the text from the search box as our query

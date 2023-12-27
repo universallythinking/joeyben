@@ -17,11 +17,14 @@
     "url": "https://github.com/johnpapa/node-hello/issues"
   },
   "dependencies": {
-    "express": "*",
-    "nodemailer": "*",
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "cookie-parser": "*",
-    "youtube-sr": "*",
-    "youtube-autocomplete": "*"
+    "express": "*",
+    "ffmpeg": "^0.0.4",
+    "nodemailer": "*",
+    "youtube-autocomplete": "*",
+    "youtube-exec": "*",
+    "youtube-sr": "*"
   },
   "homepage": "https://github.com/johnpapa/node-hello#readme"
 }
